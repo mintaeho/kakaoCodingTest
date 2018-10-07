@@ -40,6 +40,7 @@ public class RatioOfFailure {
             }
         }
 
+        // 정렬
         String tmpStageNo = "";
         String tmpRatioOfFailure = "";
         for(int i=0 ; i< ratioOfFailure.length-1 ; i++) {
