@@ -1,8 +1,6 @@
 package kakaoCodingTest.first;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class OpenChattingRoom {
@@ -10,32 +8,50 @@ public class OpenChattingRoom {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         int n = 4;
-        String records[] = new String[n];
+        String record[] = new String[n];
 
-        records = new String[] { "Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo",
+        record = new String[] { "Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo",
                 "Change uid4567 Ryan" };
 
-        List<String> events = new ArrayList<String>();
         Map<String, String> nameData = new HashMap<String, String>();
-        String message = "";
-           
-        for(String record : records) {
-            String tmpRecord[] = record.split(" ");
+        int count = 0;
+        
+        for(String row : record) {
+            String tmpRecord[] = row.split(" ");
             
-            if (tmpRecord[0].equals("Enter") || tmpRecord[0].equals("Change") ) {
+            if (tmpRecord[0].equals("Enter")) {
+                nameData.put(tmpRecord[1], tmpRecord[2]);
+                count++;
+            }
+
+            if (tmpRecord[0].equals("Change")) {
                 nameData.put(tmpRecord[1], tmpRecord[2]);
             }
             
-            if (tmpRecord[0].equals("Enter"))       message = " 님이 들어왔습니다."; 
-            else if (tmpRecord[0].equals("Leave"))  message = " 님이 나갔습니다."; 
-            
-            if (tmpRecord[0].equals("Enter") || tmpRecord[0].equals("Leave") ) {
-                events.add(nameData.get(tmpRecord[1])+message);
+            if (tmpRecord[0].equals("Leave")) {
+                count++;
             }
         }
         
-        for(int i=0 ; i<events.size() ; i++) {
-            System.out.println(events.get(i));
+        String[] answer = new String[count];
+        int index = 0;
+        
+        for(int i=0 ; i<record.length ; i++) {
+            String tmpRecord[] = record[i].split(" ");
+
+            if (tmpRecord[0].equals("Enter")) {
+                answer[index] = nameData.get(tmpRecord[1]) + "님이 들어왔습니다.";
+                index++;
+            }
+            
+            if (tmpRecord[0].equals("Leave")) {
+                answer[index] = nameData.get(tmpRecord[1]) + "님이 나갔습니다.";
+                index++;
+            }
+        }
+        
+        for(int i=0 ; i<answer.length ; i++) {
+            System.out.println(answer[i]);
         }
         
     }
