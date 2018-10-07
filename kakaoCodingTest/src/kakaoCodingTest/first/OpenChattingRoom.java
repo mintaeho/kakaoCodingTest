@@ -1,5 +1,6 @@
 package kakaoCodingTest.first;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,16 @@ public class OpenChattingRoom {
 
         record = new String[] { "Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "Enter uid1234 Prodo",
                 "Change uid4567 Ryan" };
-
+        
+        OpenChattingRoom e = new OpenChattingRoom();
+        String[] answer = e.solution(record);
+        System.out.println(Arrays.toString(answer));
+    }
+    
+    
+    
+    public String[] solution(String[] record) {
+        // TODO Auto-generated method stub
         Map<String, String> nameData = new HashMap<String, String>();
         int count = 0;
         
@@ -50,10 +60,7 @@ public class OpenChattingRoom {
             }
         }
         
-        for(int i=0 ; i<answer.length ; i++) {
-            System.out.println(answer[i]);
-        }
-        
+        return answer;
     }
 
 }
