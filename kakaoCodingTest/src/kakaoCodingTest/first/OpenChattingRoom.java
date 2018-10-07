@@ -18,7 +18,7 @@ public class OpenChattingRoom {
         List<String> events = new ArrayList<String>();
         Map<String, String> nameData = new HashMap<String, String>();
         String message = "";
-        
+           
         for(String record : records) {
             String tmpRecord[] = record.split(" ");
             
